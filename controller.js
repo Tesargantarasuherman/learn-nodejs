@@ -6,7 +6,7 @@ exports.index = function(req,res){
     response.ok('berjalan',res)
 }
 // menampilkan semua data
-exports.getMahasiswa = function(req,res){
+exports.getAllMahasiswa = function(req,res){
     connection.query('SELECT * FROM mahasiswa',function(error,rows,fields){
         if(error){
             console.log(error);
@@ -15,4 +15,17 @@ exports.getMahasiswa = function(req,res){
             response.ok(rows,res)
         }
     })  
+}
+// tampil berdasarkan id
+exports.getMahasiswa =function(req,res){
+    let id = req.params.id;
+    connection.query('SELECT * FROM mahasiswa WHERE id_mahasiswa = ?',[id],
+    function(error,rows,fields){
+        if(error){
+            console.log(error);
+        }
+        else{
+            response.ok(rows,res);
+        }
+    })
 }
