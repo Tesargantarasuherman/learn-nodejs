@@ -14,4 +14,6 @@ module.exports = function(app){
      app.route('/edit-mahasiswa').put(json.editMahasiswa)
 
      app.route('/delete-mahasiswa/:id').delete(json.deleteMahasiswa)
+
+     app.route('/matakuliah-mahasiswa').get(json.tampilGroupMatakuliah)
 }
