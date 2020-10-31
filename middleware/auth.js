@@ -13,9 +13,9 @@ exports.registrasi = function (req, res) {
     email: req.body.email,
     password: md5(req.body.password),
     role: req.body.role,
-    tanggalDaftar: new Date(),
+    tanggal_daftar: new Date(),
   };
-  var query = "SELECT email FROM ?? WHERE ??";
+  var query = "SELECT email FROM ?? WHERE ??=?";
   var table = ["user", "email", post.email];
 
   query = mysql.format(query, table);
@@ -35,7 +35,7 @@ exports.registrasi = function (req, res) {
           }
         });
       } else {
-        response.ok("Email Sudah Terdaftar");
+        response.ok("Email Sudah Terdaftar",res);
       }
     }
   });
